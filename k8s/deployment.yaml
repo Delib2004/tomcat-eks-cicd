@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: tomcat
-          image: YOUR_DOCKERHUB_USER/tomcat-app:latest   # Jenkins replaces the tag on each build
+          image: delibms/tomcat-app:latest   # Jenkins replaces the tag on each build
           ports:
             - containerPort: 8080
           readinessProbe:
