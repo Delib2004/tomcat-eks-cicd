@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    DOCKERHUB_USER = 'YOUR_DOCKERHUB_USER'
+    DOCKERHUB_USER = 'delibms'
     IMAGE          = "${DOCKERHUB_USER}/tomcat-app"
     TAG            = "${env.BUILD_NUMBER}"
     AWS_REGION     = 'ap-south-1'
