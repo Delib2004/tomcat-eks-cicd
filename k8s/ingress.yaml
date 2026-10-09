@@ -1,0 +1,23 @@
+# Needs the AWS Load Balancer Controller installed in the cluster (see README).
+# It reads this Ingress and creates an Application Load Balancer (ALB) in AWS.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tomcat-app
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+spec:
+  ingressClassName: alb
+  rules:
+    - host: delib.shop          # change to your own domain
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: tomcat-app
+                port:
+                  number: 80
